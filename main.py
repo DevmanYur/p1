@@ -17,9 +17,9 @@ def download_genre(url):
     response.raise_for_status()
 
     soup = BeautifulSoup(response.text, 'lxml')
-
-    comm = soup.find('span', class_='d_book').text
-    print(comm)
+    comm = soup.find('span', class_='d_book').find_all('a')
+    for x in comm:
+        print(x.text)
 
 
 if __name__ == '__main__':
